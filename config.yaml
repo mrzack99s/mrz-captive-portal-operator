@@ -1,0 +1,37 @@
+zauth:
+    api:
+        port: ":4443"
+        production: true
+        shareKey: "secretKey"
+    interfaces:
+        WAN: "eno1"
+        LAN: "eno2"
+    network:
+        routing: 
+            - netAddress: "10.0.0.0/20"
+            - netAddress: "172.30.0.0/21"
+            - netAddress: "192.168.120.0/22"
+        
+        eap_routing: []
+            #- netAddress: "10.0.96.0/20"
+
+        # if empty bypass routing
+        bypassNetworkRouting: 
+            - netAddress: "10.255.254.0/24"
+            - netAddress: "10.255.255.0/24"
+            - netAddress: "10.0.96.0/20"
+
+        # if have bypass routing
+        # bypassNetworkRouting:
+        #     - netAddress: "10.255.0.0/24"
+        
+        nextHop: "172.16.10.10"
+        backendMGMT: "10.10.10.102:8000"
+        frontendMGMT: "10.10.10.12:80"
+        portalAPI: "10.10.10.100:8000"
+        ipOperator: "10.10.10.103:8000"
+        switchesAPI: "172.20.0.13:8888"
+        switchesUI: "172.20.0.13:80"
+        webLogin: "10.10.10.10:80"
+        webEAPLogin: "10.10.10.11:80"
+        wirelessController: "172.20.0.13"
