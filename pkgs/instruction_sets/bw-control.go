@@ -13,9 +13,9 @@ func GetAppendBandwidthControl(dlSpeed uint32, upSpeed uint32, ipAddress string)
 	dlSpeedStr := strconv.FormatUint(uint64(dlSpeed), 10) + "bps"
 	upSpeedStr := strconv.FormatUint(uint64(upSpeed), 10) + "bps"
 	allCommand := []*os.Cmd{
-		exec.Command("tcset", configs.SystemConfig.ZAuth.Interfaces.WAN, "--overwrite", "--delay", "1ms", "--loss",
+		exec.Command("tcset", configs.SystemConfig.ZAuth.Interfaces.WAN, "--add", "--delay", "1ms", "--loss",
 			"0.01%", "--rate", dlSpeedStr, "--dst-network", ipAddress, "--direction", "incoming"),
-		exec.Command("tcset", configs.SystemConfig.ZAuth.Interfaces.LAN, "--overwrite", "--delay", "1ms", "--loss",
+		exec.Command("tcset", configs.SystemConfig.ZAuth.Interfaces.LAN, "--add", "--delay", "1ms", "--loss",
 			"0.01%", "--rate", upSpeedStr, "--src-network", ipAddress, "--direction", "incoming"),
 	}
 

@@ -1,5 +1,5 @@
 build:
-	go build -o bin/zauth-operator .
+	go build -o bin/mrz-captive-portal-operator .
 
 run:
 	go run main.go
