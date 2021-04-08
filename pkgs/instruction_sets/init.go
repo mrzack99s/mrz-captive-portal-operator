@@ -57,6 +57,8 @@ func GetPrepareSystem() []*os.Cmd {
 			"-m", "state", "--state", "ESTABLISHED,RELATED", "-j", "ACCEPT"),
 		exec.Command("iptables", "-A", "FORWARD", "-m", "conntrack",
 			"--ctstate", "ESTABLISHED,RELATED", "-j", "ACCEPT"),
+		exec.Command("tcdel", configs.SystemConfig.ZAuth.Interfaces.WAN, "--all"),
+		exec.Command("tcdel", configs.SystemConfig.ZAuth.Interfaces.LAN, "--all"),
 	}
 
 	return allCommand
